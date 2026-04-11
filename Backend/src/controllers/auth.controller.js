@@ -111,9 +111,17 @@ async function loginUserController(req, res) {
 }
 
 async function logoutUserController(req, res) {
-  const token = req.cookies.token;
+  const token = req.token;
 
-  if (token) {
+  if (!token) {
+  return res.status(401).json({
+    message: "No token found",
+  });
+}
+
+  const exists = await tokenBlackListModel.findOne({ token });
+
+  if (!exists) {
     await tokenBlackListModel.create({ token });
   }
   res.clearCookie("token");
