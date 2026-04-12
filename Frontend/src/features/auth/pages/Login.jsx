@@ -19,9 +19,11 @@ const Login = () => {
   }
 
   if(loading){
+    console.log("loading from login.jsx")
     return (
       <main>
         <h1>Loading from Login.jsx...</h1>
+
       </main>
     )
   }

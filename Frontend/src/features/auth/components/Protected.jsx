@@ -6,6 +6,7 @@ function Protected({ children }) {
   const { loading, user } = useAuth();
 
   if (loading) {
+    console.log("Loading from Protected Route...")
     return <h1>Loading from Protected Route...</h1>;
   }
 
