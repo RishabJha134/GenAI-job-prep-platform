@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+
 // importing all routes here
 const authRouter = require("./routes/auth.routes");
 
@@ -18,5 +19,6 @@ app.use(
 
 // using all routes here
 app.use("/api/auth", authRouter);
+
 
 module.exports = app;
