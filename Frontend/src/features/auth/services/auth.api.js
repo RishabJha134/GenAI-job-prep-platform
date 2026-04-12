@@ -25,10 +25,8 @@ export async function login({ email, password }) {
       email,
       password,
     });
-
     return response.data;
   } catch (error) {
-    console.log("error in login:" + error);
   }
 }
 
