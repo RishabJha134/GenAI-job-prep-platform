@@ -1,7 +1,6 @@
 const { GoogleGenAI } =  require("@google/genai");
 
 const { z } = require("zod");
-const { zodToJsonSchema } = require("zod-to-json-schema");
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GENAI_API_KEY,
@@ -109,10 +108,10 @@ async function generateInterviewReport({
     contents: prompt,
     config: {
       responseMimeType: "application/json",
-      responseJsonSchema: zodToJsonSchema(interviewReportSchema, { $refStrategy: "none" }),
+      responseJsonSchema: z.toJSONSchema(interviewReportSchema),
     },
   });
-  console.log(response.text);
+//   console.log(response.text);
   return JSON.parse(response.text);
 }
 
