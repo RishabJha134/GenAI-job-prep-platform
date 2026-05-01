@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../style/home.scss"
+import { useInterview } from "../hooks/useInterview";
 
 const Home = () => {
+
+  const {loading,generateReport} = useInterview();
+  const {jobDescription,setJobDescription} = useState("");
+  const {selfDescription,setSelfDescription} = useState("");
+  const resumeInputRef = useRef();
+
+
   return (
     <main className="home">
       <div className="interview-input-group">

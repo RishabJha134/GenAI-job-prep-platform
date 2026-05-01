@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App.jsx";
 import "./style.scss";
 import { AuthProvider } from "./features/auth/auth.context.jsx";
+import { InterviewProvider } from "./features/interview/interview.context.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <App />
+      <InterviewProvider>
+        <App />
+      </InterviewProvider>
     </AuthProvider>
   </StrictMode>,
 );
