@@ -62,8 +62,11 @@ const Interview = ({ data }) => {
   const [activeTab, setActiveTab] = useState("technical");
   const {report,getReportById,loading} = useInterview();
   const {interviewId} = useParams();
+
+  if(data){
+    data = report;
+  }
   
-  data = report;
 
   console.log("data: "+ JSON.stringify(data));
 
@@ -74,7 +77,7 @@ const Interview = ({ data }) => {
     }
   },[interviewId]);
 
-  if(loading){
+  if(loading || !data){
     return <div>
       <h1>Loading your interview plan</h1>
     </div>
