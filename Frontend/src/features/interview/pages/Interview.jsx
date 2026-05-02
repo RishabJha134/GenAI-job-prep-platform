@@ -1,53 +1,55 @@
 import { useState } from "react";
 import "../style/interview.scss";
+import { useInterview } from "../hooks/useInterview";
+import { useEffect } from "react";
 
-const sampleData = {
-  matchScore: 95,
-  technicalQuestions: [
-    {
-      question: "How did you implement the debounced search in your 'Video Tube' project, and why was it necessary for performance?",
-      intention: "To test the candidate's understanding of client-side performance optimization and practical implementation of common patterns.",
-      answer: "Explain that debouncing limits the rate at which a function fires. In 'Video Tube', I used a timer (setTimeout) within a useEffect or a custom hook to delay the API call until the user stops typing for a specific duration (e.g., 300ms).",
-    },
-    {
-      question: "In your internship at Pushplus, you mentioned implementing microservices. How did these services communicate with each other?",
-      intention: "To assess knowledge of backend architecture and inter-service communication patterns.",
-      answer: "Describe whether you used synchronous communication (REST/gRPC) or asynchronous (Message Queues like RabbitMQ or Redis Pub/Sub).",
-    },
-  ],
-  behavioralQuestions: [
-    {
-      question: "You worked on maintaining a legacy codebase at CreateBytes. What was the biggest challenge you faced, and how did you resolve it?",
-      intention: "To evaluate problem-solving skills in difficult environments and the ability to handle technical debt.",
-      answer: "Focus on a specific instance, such as replacing the deprecated Stripe methods. Mention reading official documentation, testing in a sandbox environment, and ensuring backward compatibility.",
-    },
-  ],
-  skillGaps: [
-    { skill: "redis", severity: "medium" },
-    { skill: "devops", severity: "low" },
-    { skill: "ci/cd", severity: "medium" },
-    { skill: "sockets", severity: "low" },
-  ],
-  preparationPlan: [
-    {
-      day: 1,
-      focus: "Advanced JavaScript & React Fundamentals",
-      tasks: [
-        "Review Closures, Event Loop, and Promises in JavaScript.",
-        "Practice React Hooks (useMemo, useCallback) to explain performance optimization.",
-        "Deep dive into Next.js rendering patterns (SSR, SSG, ISR).",
-      ],
-    },
-    {
-      day: 2,
-      focus: "Backend Architecture & Databases",
-      tasks: [
-        "Review Node.js Event Loop and non-blocking I/O.",
-        "Study SQL vs NoSQL trade-offs and advanced Prisma features.",
-      ],
-    },
-  ],
-};
+// const sampleData = {
+//   matchScore: 95,
+//   technicalQuestions: [
+//     {
+//       question: "How did you implement the debounced search in your 'Video Tube' project, and why was it necessary for performance?",
+//       intention: "To test the candidate's understanding of client-side performance optimization and practical implementation of common patterns.",
+//       answer: "Explain that debouncing limits the rate at which a function fires. In 'Video Tube', I used a timer (setTimeout) within a useEffect or a custom hook to delay the API call until the user stops typing for a specific duration (e.g., 300ms).",
+//     },
+//     {
+//       question: "In your internship at Pushplus, you mentioned implementing microservices. How did these services communicate with each other?",
+//       intention: "To assess knowledge of backend architecture and inter-service communication patterns.",
+//       answer: "Describe whether you used synchronous communication (REST/gRPC) or asynchronous (Message Queues like RabbitMQ or Redis Pub/Sub).",
+//     },
+//   ],
+//   behavioralQuestions: [
+//     {
+//       question: "You worked on maintaining a legacy codebase at CreateBytes. What was the biggest challenge you faced, and how did you resolve it?",
+//       intention: "To evaluate problem-solving skills in difficult environments and the ability to handle technical debt.",
+//       answer: "Focus on a specific instance, such as replacing the deprecated Stripe methods. Mention reading official documentation, testing in a sandbox environment, and ensuring backward compatibility.",
+//     },
+//   ],
+//   skillGaps: [
+//     { skill: "redis", severity: "medium" },
+//     { skill: "devops", severity: "low" },
+//     { skill: "ci/cd", severity: "medium" },
+//     { skill: "sockets", severity: "low" },
+//   ],
+//   preparationPlan: [
+//     {
+//       day: 1,
+//       focus: "Advanced JavaScript & React Fundamentals",
+//       tasks: [
+//         "Review Closures, Event Loop, and Promises in JavaScript.",
+//         "Practice React Hooks (useMemo, useCallback) to explain performance optimization.",
+//         "Deep dive into Next.js rendering patterns (SSR, SSG, ISR).",
+//       ],
+//     },
+//     {
+//       day: 2,
+//       focus: "Backend Architecture & Databases",
+//       tasks: [
+//         "Review Node.js Event Loop and non-blocking I/O.",
+//         "Study SQL vs NoSQL trade-offs and advanced Prisma features.",
+//       ],
+//     },
+//   ],
+// };
 
 const TABS = [
   { id: "technical", label: "Technical Questions" },
@@ -55,8 +57,27 @@ const TABS = [
   { id: "roadmap", label: "Roadmap" },
 ];
 
-const Interview = ({ data = sampleData }) => {
+const Interview = ({ data }) => {
   const [activeTab, setActiveTab] = useState("technical");
+  const {report,getReportById,loading} = useInterview();
+  const {interviewId} = useParams();
+  
+  if(report){
+    data = report;
+  }
+
+  
+  useEffect(()=>{
+    if(interviewId){
+      getReportById(interviewId);
+    }
+  },[interviewId]);
+
+  if(loading){
+    return <div>
+      <h1>Loading your interview plan</h1>
+    </div>
+  }
 
   const renderQuestions = (questions) => (
     <div className="question-list">
