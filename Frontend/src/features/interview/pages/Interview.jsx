@@ -58,14 +58,13 @@ const TABS = [
   { id: "roadmap", label: "Roadmap" },
 ];
 
-const Interview = ({ data }) => {
+const Interview = () => {
   const [activeTab, setActiveTab] = useState("technical");
   const {report,getReportById,loading} = useInterview();
   const {interviewId} = useParams();
+  const data = report; // Replace with actual data fetching logic
 
-  if(data){
-    data = report;
-  }
+  
   
 
   console.log("data: "+ JSON.stringify(data));
