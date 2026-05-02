@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../style/interview.scss";
 import { useInterview } from "../hooks/useInterview";
 import { useEffect } from "react";
+import { useParams } from "react-router";
 
 // const sampleData = {
 //   matchScore: 95,
@@ -62,9 +63,9 @@ const Interview = ({ data }) => {
   const {report,getReportById,loading} = useInterview();
   const {interviewId} = useParams();
   
-  if(report){
-    data = report;
-  }
+  data = report;
+
+  console.log("data: "+ JSON.stringify(data));
 
   
   useEffect(()=>{
