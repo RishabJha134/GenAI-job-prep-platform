@@ -4,7 +4,7 @@ import "../style/home.scss";
 import { useInterview } from "../hooks/useInterview";
 
 const Home = () => {
-  const { loading, generateReport } = useInterview();
+  const { loading, generateReport, reports } = useInterview();
   const [jobDescription, setJobDescription] = useState("");
   const [selfDescription, setSelfDescription] = useState("");
   const resumeInputRef = useRef();
@@ -16,6 +16,8 @@ const Home = () => {
     console.log("Generated Report: ", data);
     if (data?._id) navigate(`/interview/${data._id}`);
   }
+
+  console.log("reports: "+ JSON.stringify(reports));
 
   if(loading){
     return (
@@ -66,6 +68,19 @@ const Home = () => {
           <button onClick={handleGenerateReport} className="generate-btn">Generate Interview Report </button>
         </div>
       </div>
+
+      {/* recent reports list */}
+      {reports.length > 0 && <div className="recent-reports">
+        <h2>Recent Interview Reports</h2>
+        <ul className="reports-list">
+          {reports.map((report) => (
+            <li key={report._id} className="report-item" onClick={()=>navigate(`/interview/${report._id}`)}>
+              <h3>{report.title || "Untitled Position"}</h3>
+              <p>{new Date(report.createdAt).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      </div>}
     </main>
   );
 };
