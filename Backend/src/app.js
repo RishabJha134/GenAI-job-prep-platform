@@ -18,6 +18,10 @@ app.use(
   }),
 );
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ message: "Server is healthy" });
+});
+
 // using all routes here
 app.use("/api/auth", authRouter);
 app.use("/api/interview",interviewRouter);

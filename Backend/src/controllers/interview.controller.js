@@ -1,5 +1,5 @@
 const pdfParse = require("pdf-parse");
-const generateInterviewReport = require("../services/ai.service");
+const {generateInterviewReport,generateResumePDF} = require("../services/ai.service");
 const interviewReportModel = require("../models/interviewReport.model");
 
 
@@ -69,9 +69,35 @@ async function getAllInterviewController(req, res) {
     interviewReports,
   });
 }
+
+async function generateResumePDFController(req,res){
+  const {interviewReportId} = req.params;
+  console.log("interviewReportId: "+ interviewReportId);  
+  const interviewReport = await interviewReportModel.findOne({
+    _id: interviewReportId,
+});
+if(!interviewReport){
+    return res.status(404).json({
+        message: "Interview report not found.",
+    });
+}
+
+const {resume,jobDescriptiom,selfDescription} = interviewReport;
+const pdfBuffer = await generateResumePDF({resume,jobDescriptiom,selfDescription});
+
+res.set({
+    "Content-Type":"application/pdf",
+    "Content-Disposition":`attachment; filename=resume_${interviewReportId}.pdf`,
+});
+res.send(pdfBuffer);
+}
+
+
+
  
 module.exports = {
   generateInterviewReportController,
   getInterviewReportController,
   getAllInterviewController,
+  generateResumePDFController,
 };
