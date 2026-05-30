@@ -1,19 +1,58 @@
 .button {
-  border: none;
-  outline: none;
-  padding-inline: 1.5rem;
-  padding-block: 0.75rem;
-  border-radius: 1rem;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 999px;
+  border: 1px solid transparent;
   cursor: pointer;
-
-  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    background-color var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base);
 
   &.primary-button {
-    background-color: #e1034d;
-    color: white;
+    background-color: var(--accent);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
   }
-  &:active{
-    transform: scale(0.9);
+
+  &.secondary-button {
+    background-color: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  &.ghost-button {
+    background-color: transparent;
+    color: var(--text);
+    border-color: transparent;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &.primary-button:hover {
+    background-color: var(--accent-strong);
+  }
+
+  &.secondary-button:hover,
+  &.ghost-button:hover {
+    background-color: var(--surface-2);
+    border-color: var(--border);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
 }

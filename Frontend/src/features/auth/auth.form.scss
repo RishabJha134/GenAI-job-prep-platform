@@ -1,78 +1,63 @@
 main.auth-page {
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  display: grid;
+  place-items: center;
+  padding: var(--space-10) var(--space-4);
 
   .form-container {
     width: 100%;
-    max-width: 400px;
-    padding: 2.5rem 2rem;
-    border-radius: 1rem;
-    background-color: #1e1e1e;
-    border: 1px solid #2a2a2a;
+    max-width: 420px;
+    padding: var(--space-8) var(--space-7);
+    border-radius: var(--radius-lg);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
 
     h1 {
-      font-size: 1.75rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.4vw, 2.1rem);
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      margin-bottom: var(--space-2);
     }
 
     .subtitle {
-      color: #888;
-      font-size: 0.875rem;
-      margin-bottom: 2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: var(--space-7);
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: var(--space-5);
     }
 
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: var(--space-2);
 
       label {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 500;
-        color: #aaa;
+        color: var(--text-muted);
         letter-spacing: 0.02em;
       }
 
       input {
-        width: 100%;
-        padding: 0.7rem 0.9rem;
-        border-radius: 0.5rem;
-        border: 1px solid #333;
-        background-color: #252525;
-        color: whitesmoke;
-        font-size: 0.95rem;
-        outline: none;
-        transition: border-color 0.2s ease;
-
-        &::placeholder {
-          color: #555;
-        }
-
-        &:focus {
-          border-color: #e1034d;
-        }
+        background-color: var(--surface-2);
       }
     }
 
     .register-link {
-      margin-top: 1.25rem;
+      margin-top: var(--space-6);
       text-align: center;
-      font-size: 0.875rem;
-      color: #888;
+      font-size: 0.9rem;
+      color: var(--text-muted);
 
       a {
-        color: #e1034d;
+        color: var(--accent);
         text-decoration: none;
         font-weight: 500;
 
@@ -84,10 +69,9 @@ main.auth-page {
 
     .button.primary-button {
       width: 100%;
-      margin-top: 0.5rem;
+      margin-top: var(--space-2);
       font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      font-weight: 600;
     }
   }
 }

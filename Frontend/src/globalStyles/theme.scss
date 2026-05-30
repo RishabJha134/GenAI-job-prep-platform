@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap");
+
+:root {
+  color-scheme: light dark;
+  --font-sans: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Sora", system-ui, sans-serif;
+
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --surface-2: #f1f0ec;
+  --border: #e1ded7;
+  --text: #121417;
+  --text-muted: #5d6168;
+
+  --accent: #ff6b3d;
+  --accent-strong: #e85a2a;
+  --accent-rgb: 255, 107, 61;
+
+  --success: #1f9d55;
+  --warning: #b7791f;
+  --danger: #c53030;
+  --info: #1d4ed8;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.08);
+  --shadow-md: 0 16px 40px rgba(16, 24, 40, 0.14);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+
+  --transition-base: 180ms ease;
+  --focus-ring: 0 0 0 3px rgba(var(--accent-rgb), 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1016;
+    --surface: #121923;
+    --surface-2: #18222f;
+    --border: #233042;
+    --text: #e7ebf1;
+    --text-muted: #a1acbd;
+
+    --accent: #ff7a45;
+    --accent-strong: #ff5b25;
+    --accent-rgb: 255, 122, 69;
+
+    --success: #3ac77b;
+    --warning: #f1c66a;
+    --danger: #ff8a8a;
+    --info: #7aa2ff;
+
+    --shadow-sm: 0 1px 2px rgba(4, 6, 12, 0.5);
+    --shadow-md: 0 20px 50px rgba(4, 6, 12, 0.55);
+  }
+}
