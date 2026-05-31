@@ -1,1 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
+
+@layer base {
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply min-h-screen antialiased;
+		margin: 0;
+		font-family: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+		background:
+			radial-gradient(1100px 540px at 10% -10%, rgba(255, 107, 61, 0.18), transparent),
+			radial-gradient(900px 520px at 90% 0%, rgba(31, 157, 85, 0.12), transparent),
+			#f8f7f4;
+		color: #121417;
+	}
+
+	#root {
+		@apply min-h-screen;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			background:
+				radial-gradient(1100px 540px at 10% -10%, rgba(255, 122, 69, 0.18), transparent),
+				radial-gradient(900px 520px at 90% 0%, rgba(58, 199, 123, 0.12), transparent),
+				#0c1016;
+			color: #e7ebf1;
+		}
+	}
+}
