@@ -26,8 +26,10 @@ export const useAuth = () => {
     try {
       const data = await login({ email, password });
       setUser(data.user);
+      return { success: true };
     } catch (error) {
       console.log(error)
+      return { success: false, error: error?.response?.data?.message || "Invalid credentials" };
     } finally {
       setLoading(false);
     }
@@ -38,8 +40,10 @@ export const useAuth = () => {
     try {
       const data = await register({ username, email, password });
       setUser(data.user);
+      return { success: true };
     } catch (error) {
       console.log(error);
+      return { success: false, error: error?.response?.data?.message || "Registration failed" };
     } finally {
       setLoading(false);
     }

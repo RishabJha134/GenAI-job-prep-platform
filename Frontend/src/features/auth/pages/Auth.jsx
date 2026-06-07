@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import AuthSidebar from "../components/AuthSidebar";
 
 const Auth = ({ isLogin }) => {
-  const { loading, handleLogin, handleRegister } = useAuth();
+  const { user, loading, handleLogin, handleRegister } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect to home if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -38,12 +45,18 @@ const Auth = ({ isLogin }) => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    let result;
     if (isLogin) {
-      await handleLogin({ email, password });
+      result = await handleLogin({ email, password });
     } else {
-      await handleRegister({ username, email, password });
+      result = await handleRegister({ username, email, password });
     }
-    navigate("/");
+
+    if (result && result.success) {
+      navigate("/");
+    } else if (result && result.error) {
+      setError(result.error);
+    }
   }
 
   if (loading) {
