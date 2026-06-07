@@ -7,8 +7,11 @@ function Protected({ children }) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center px-4 text-slate-700 dark:text-slate-200">
-        <h1 className="text-lg font-medium">Loading from Protected Route...</h1>
+      <div className="flex min-h-screen items-center justify-center px-4" style={{ background: '#09090B' }}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-10 w-10 rounded-full border-2 border-indigo-500/30 border-t-indigo-500 animate-spin"></div>
+          <h1 className="text-sm font-medium text-zinc-400">Loading...</h1>
+        </div>
       </div>
     );
   }

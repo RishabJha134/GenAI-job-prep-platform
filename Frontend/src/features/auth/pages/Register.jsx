@@ -23,27 +23,36 @@ const Register = () => {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center px-4">
-        <h1 className="text-lg font-medium text-slate-700 dark:text-slate-200">Loading...</h1>
+      <main className="flex min-h-screen items-center justify-center px-4" style={{ background: '#09090B' }}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-10 w-10 rounded-full border-2 border-indigo-500/30 border-t-indigo-500 animate-spin"></div>
+          <h1 className="text-sm font-medium text-zinc-400">Creating your account...</h1>
+        </div>
       </main>
     )
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-4 py-10 text-slate-900 dark:text-slate-100">
-      <div className="w-full max-w-md rounded-3xl border border-white/70 bg-white/85 p-8 shadow-2xl shadow-slate-900/10 backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/80 dark:shadow-black/30 sm:p-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-orange-500 dark:text-orange-400">
-          Job prep platform
+    <main className="relative flex min-h-screen items-center justify-center px-4 py-10 text-zinc-100" style={{ background: '#09090B' }}>
+      {/* Background glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/3 top-1/4 h-[500px] w-[500px] rounded-full opacity-25" style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)' }}></div>
+        <div className="absolute right-1/3 bottom-1/3 h-[400px] w-[400px] rounded-full opacity-20" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)' }}></div>
+      </div>
+
+      <div className="animate-fadeIn relative w-full max-w-md rounded-2xl border border-zinc-800 p-8 shadow-2xl shadow-black/40 sm:p-10" style={{ background: '#18181B' }}>
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ai-gradient">
+          ✦ ResumeAI
         </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Create your account
         </h1>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+        <p className="mt-2 text-sm text-zinc-400">
           Register to continue
         </p>
         <form className="mt-8 flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="text-sm font-medium text-slate-600 dark:text-slate-300">
+            <label htmlFor="username" className="text-sm font-medium text-zinc-400">
               Username
             </label>
             <input
@@ -51,7 +60,7 @@ const Register = () => {
               id="username"
               name="username"
               placeholder="Enter your username"
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
@@ -59,7 +68,7 @@ const Register = () => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium text-slate-600 dark:text-slate-300">
+            <label htmlFor="email" className="text-sm font-medium text-zinc-400">
               Email
             </label>
             <input
@@ -67,7 +76,7 @@ const Register = () => {
               id="email"
               name="email"
               placeholder="you@example.com"
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -75,7 +84,7 @@ const Register = () => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="text-sm font-medium text-slate-600 dark:text-slate-300">
+            <label htmlFor="password" className="text-sm font-medium text-zinc-400">
               Password
             </label>
             <input
@@ -83,7 +92,7 @@ const Register = () => {
               id="password"
               name="password"
               placeholder="Your password"
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800/80 px-4 py-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -92,14 +101,15 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            className="inline-flex w-full items-center justify-center rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-500/20"
+            className="btn-shimmer inline-flex w-full items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:-translate-y-0.5 hover:bg-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/20"
           >
-            Register
+            Create Account
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-300">
-          Already have an account? <Link to={"/login"}>Login</Link>
+        <p className="mt-6 text-center text-sm text-zinc-500">
+          Already have an account?{" "}
+          <Link to={"/login"} className="font-medium text-indigo-400 transition hover:text-indigo-300">Sign in</Link>
         </p>
       </div>
     </main>
