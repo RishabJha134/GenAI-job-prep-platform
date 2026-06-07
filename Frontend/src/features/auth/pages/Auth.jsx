@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 import { useAuth } from "../hooks/useAuth";
 import AuthSidebar from "../components/AuthSidebar";
 
@@ -53,9 +54,10 @@ const Auth = ({ isLogin }) => {
     }
 
     if (result && result.success) {
+      toast.success(isLogin ? "Welcome back!" : "Account created successfully!");
       navigate("/");
     } else if (result && result.error) {
-      setError(result.error);
+      toast.error(result.error);
     }
   }
 

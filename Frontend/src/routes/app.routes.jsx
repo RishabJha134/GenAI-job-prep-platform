@@ -7,11 +7,11 @@ import Interview from "../features/interview/pages/Interview.jsx";
 export const router = createBrowserRouter([
   {
     path: "/login",
-    element: <Auth isLogin={true} />,
+    element: <Auth isLogin={true} key="login" />,
   },
   {
     path: "/register",
-    element: <Auth isLogin={false} />,
+    element: <Auth isLogin={false} key="register" />,
   },
   {
     path: "/",

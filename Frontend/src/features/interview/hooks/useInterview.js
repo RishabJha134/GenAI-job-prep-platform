@@ -7,6 +7,7 @@ import {
 import { useContext, useEffect, useCallback } from "react";
 import { InterviewContext } from "../interview.context";
 import { useParams } from "react-router";
+import { toast } from "sonner";
 
 export const useInterview = () => {
   const context = useContext(InterviewContext);
@@ -27,6 +28,7 @@ export const useInterview = () => {
   }) => {
     setLoading(true);
     let response = null;
+    const toastId = toast.loading("Analyzing your resume and generating report...");
     try {
       response = await generateInterviewReport({
         jobDescription,
@@ -34,8 +36,10 @@ export const useInterview = () => {
         resumeFile,
       });
       setReport(response.interviewReport);
+      toast.success("Report generated successfully!", { id: toastId });
     } catch (error) {
-      console.log("error generating interview report:" + error);
+      console.log("error generating interview report:", error);
+      toast.error(error?.response?.data?.message || "Failed to generate report. Please try again.", { id: toastId });
     } finally {
       setLoading(false);
     }
@@ -50,7 +54,8 @@ export const useInterview = () => {
       response = await getInterviewReportById(interviewId);
       setReport(response.interviewReport);
     } catch (error) {
-      console.log("error: " + error);
+      console.log("error: ", error);
+      toast.error("Failed to load interview report.");
     } finally {
       setLoading(false);
     }
@@ -65,7 +70,8 @@ export const useInterview = () => {
       response = await getAllInterviewReports();
       setReports(response.interviewReports);
     } catch (error) {
-      console.log("Error: " + error);
+      console.log("Error: ", error);
+      toast.error("Failed to load your reports.");
     } finally {
       setLoading(false);
     }
@@ -75,6 +81,7 @@ export const useInterview = () => {
   const getResumePdf = useCallback(async ({interviewReportId}) => {
     setLoading(true);
     let response = null;
+    const toastId = toast.loading("Generating your tailored resume PDF...");
     try {
       response = await generateResumePdf({interviewReportId});
       const url = window.URL.createObjectURL(new Blob([response],{type: "application/pdf"}));
@@ -85,10 +92,12 @@ export const useInterview = () => {
       link.click();
       document.body.removeChild(link);
 
-  window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+      toast.success("Resume downloaded successfully!", { id: toastId });
 
     } catch (error) {
-      console.log("Error: " + error);
+      console.log("Error: ", error);
+      toast.error("Failed to download resume.", { id: toastId });
     } finally {
       setLoading(false);
     }

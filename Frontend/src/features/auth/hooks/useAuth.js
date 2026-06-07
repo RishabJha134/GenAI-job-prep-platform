@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../auth.context";
 import { getMe, login, logout, register } from "../services/auth.api";
+import { toast } from "sonner";
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -52,10 +53,12 @@ export const useAuth = () => {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      const data = await logout();
+      await logout();
       setUser(null);
+      toast.success("Logged out successfully");
     } catch (error) {
       console.log(error);
+      toast.error("Failed to log out. Please try again.");
     } finally {
       setLoading(false);
     }
