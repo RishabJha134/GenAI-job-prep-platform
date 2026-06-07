@@ -29,6 +29,13 @@ const LandingHeader = ({ user, handleLogout }) => {
     }
   };
 
+  const capitalizeFirstLetter = (str) => {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const displayName = capitalizeFirstLetter(user?.username || user?.name || "User");
+
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-surface-main/90 border-border-subtle shadow-md backdrop-blur-xl' : 'bg-surface-main/60 border-transparent backdrop-blur-xl'}`} id="navbar">
       <div className="flex justify-between items-center h-header-height px-gutter max-w-container-max mx-auto">
@@ -44,7 +51,7 @@ const LandingHeader = ({ user, handleLogout }) => {
         <div className="flex items-center gap-4">
           {user ? (
             <>
-              <span className="text-on-surface-variant text-sm font-medium leading-normal mr-2 hidden md:inline">Welcome, {user.username || user.name || "User"}</span>
+              <span className="text-on-surface-variant text-sm font-medium leading-normal mr-2 hidden md:inline">Welcome, {displayName}</span>
               <button onClick={() => navigate("/dashboard")} className="bg-primary-container text-white font-label-sm text-label-sm px-4 py-2 rounded-lg font-bold hover:scale-105 transition-transform duration-200 cursor-pointer active:scale-95 shadow-[0_0_15px_rgba(128,131,255,0.3)]">
                 Dashboard
               </button>

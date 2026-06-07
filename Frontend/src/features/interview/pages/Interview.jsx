@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useInterview } from "../hooks/useInterview";
-import { useAuth } from "../../auth/hooks/useAuth";
 
 const TABS = [
   { id: "technical", label: "Technical Questions" },
@@ -11,8 +10,7 @@ const TABS = [
 
 const Interview = () => {
   const [activeTab, setActiveTab] = useState("technical");
-  const {report,loading,getResumePdf} = useInterview();
-  const { handleLogout } = useAuth();
+  const {report,loading,resumeLoading,getResumePdf} = useInterview();
   const interviewId = report?._id;
   const data = report; // Replace with actual data fetching logic
 
@@ -178,17 +176,20 @@ const Interview = () => {
           {/* Download button */}
           <button
             onClick={handleDownloadResume}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 flex items-center gap-2"
+            disabled={resumeLoading}
+            className={`bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105 flex items-center gap-2 cursor-pointer ${resumeLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
-            <span className="material-symbols-outlined text-[18px]">download</span>
-            <span className="hidden sm:inline">Resume</span>
-          </button>
-          {/* Log Out button */}
-          <button
-            onClick={handleLogout}
-            className="text-xs font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer border border-zinc-700 hover:border-zinc-500 rounded-lg px-3 py-2 hidden md:inline-block"
-          >
-            Log Out
+            {resumeLoading ? (
+              <>
+                <span className="material-symbols-outlined text-[18px] animate-spin">sync</span>
+                <span className="hidden sm:inline">Generating...</span>
+              </>
+            ) : (
+              <>
+                <span className="material-symbols-outlined text-[18px]">description</span>
+                <span className="hidden sm:inline">Generate ATS Resume</span>
+              </>
+            )}
           </button>
         </div>
       </header>

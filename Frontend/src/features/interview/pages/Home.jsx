@@ -1,15 +1,23 @@
 import React, { useRef, useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { useInterview } from "../hooks/useInterview";
-import { useAuth } from "../../auth/hooks/useAuth";
 
 const Home = () => {
   const { loading, generateReport, reports } = useInterview();
-  const { handleLogout } = useAuth();
   const [jobDescription, setJobDescription] = useState("");
   const [selfDescription, setSelfDescription] = useState("");
+  const [fileName, setFileName] = useState("");
   const resumeInputRef = useRef();
   const navigate = useNavigate();
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFileName(file.name);
+    } else {
+      setFileName("");
+    }
+  };
 
   const handleGenerateReport = async()=>{
     const resumeFile = resumeInputRef.current.files[0];
@@ -53,14 +61,6 @@ const Home = () => {
           <Link to="/" className="text-xl font-bold text-primary tracking-tighter" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             ResumeAI
           </Link>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handleLogout}
-              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
-            >
-              Log Out
-            </button>
-          </div>
         </div>
 
         {/* ═══ Page Header (Stitch Prepare style) ═══ */}
@@ -88,16 +88,25 @@ const Home = () => {
 
               {/* Upload Dropzone */}
               <label
-                className="group flex flex-col items-center justify-center border-2 border-dashed border-[#48474b] hover:border-indigo-500/50 rounded-xl p-8 cursor-pointer transition-colors"
+                className={`group flex flex-col items-center justify-center border-2 border-dashed rounded-xl p-8 cursor-pointer transition-all duration-300 ${fileName ? 'border-emerald-500/50 hover:border-emerald-500 bg-emerald-500/5' : 'border-[#48474b] hover:border-indigo-500/50 bg-[#1f1f23]'}`}
                 htmlFor="resume"
-                style={{ background: '#1f1f23' }}
               >
-                <span className="material-symbols-outlined text-4xl text-indigo-500/50 group-hover:text-indigo-400 transition-colors mb-4">cloud_upload</span>
-                <p className="text-white font-medium mb-1">Drag & drop your resume here</p>
-                <p className="text-[#acaaae] text-sm mb-4">or click to browse</p>
-                <div className="flex gap-2">
-                  <span className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full px-2.5 py-0.5 text-xs font-medium">PDF</span>
-                </div>
+                {fileName ? (
+                  <>
+                    <span className="material-symbols-outlined text-4xl text-emerald-400 transition-colors mb-4 animate-bounce">check_circle</span>
+                    <p className="text-white font-semibold mb-1 text-sm tracking-wide truncate max-w-full px-4">{fileName}</p>
+                    <p className="text-emerald-400/80 text-xs mt-1">Successfully selected. Click to replace file.</p>
+                  </>
+                ) : (
+                  <>
+                    <span className="material-symbols-outlined text-4xl text-indigo-500/50 group-hover:text-indigo-400 transition-colors mb-4">cloud_upload</span>
+                    <p className="text-white font-medium mb-1">Drag & drop your resume here</p>
+                    <p className="text-[#acaaae] text-sm mb-4">or click to browse</p>
+                    <div className="flex gap-2">
+                      <span className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full px-2.5 py-0.5 text-xs font-medium">PDF</span>
+                    </div>
+                  </>
+                )}
               </label>
               <input
                 ref={resumeInputRef}
@@ -106,6 +115,7 @@ const Home = () => {
                 name="resume"
                 id="resume"
                 accept=".pdf"
+                onChange={handleFileChange}
               />
             </div>
 

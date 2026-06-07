@@ -4,7 +4,7 @@ import {
   getInterviewReportById,
   generateResumePdf,
 } from "../services/interview.api";
-import { useContext, useEffect, useCallback } from "react";
+import { useContext, useEffect, useCallback, useState } from "react";
 import { InterviewContext } from "../interview.context";
 import { useParams } from "react-router";
 import { toast } from "sonner";
@@ -12,8 +12,7 @@ import { toast } from "sonner";
 export const useInterview = () => {
   const context = useContext(InterviewContext);
   const { interviewId } = useParams();
-  
-
+  const [resumeLoading, setResumeLoading] = useState(false);
 
   if (!context) {
     throw new Error("use Interview must be within a InterviewProvider");
@@ -79,7 +78,7 @@ export const useInterview = () => {
   }, [setLoading, setReports]);
 
   const getResumePdf = useCallback(async ({interviewReportId}) => {
-    setLoading(true);
+    setResumeLoading(true);
     let response = null;
     const toastId = toast.loading("Generating your tailored resume PDF...");
     try {
@@ -99,10 +98,10 @@ export const useInterview = () => {
       console.log("Error: ", error);
       toast.error("Failed to download resume.", { id: toastId });
     } finally {
-      setLoading(false);
+      setResumeLoading(false);
     }
     return response;
-  }, [setLoading]);
+  }, []);
 
 
   useEffect(()=>{
@@ -115,6 +114,7 @@ export const useInterview = () => {
 
   return {
     loading,
+    resumeLoading,
     report,
     reports,
     generateReport,
