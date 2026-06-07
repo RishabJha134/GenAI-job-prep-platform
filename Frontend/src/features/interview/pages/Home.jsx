@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { useInterview } from "../hooks/useInterview";
+import { useAuth } from "../../auth/hooks/useAuth";
 
 const Home = () => {
   const { loading, generateReport, reports } = useInterview();
+  const { handleLogout } = useAuth();
   const [jobDescription, setJobDescription] = useState("");
   const [selfDescription, setSelfDescription] = useState("");
   const resumeInputRef = useRef();
@@ -45,6 +47,21 @@ const Home = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-8 relative z-10">
+
+        {/* ═══ Dashboard Top Bar ═══ */}
+        <div className="flex justify-between items-center border-b border-zinc-800 pb-4">
+          <Link to="/" className="text-xl font-bold text-primary tracking-tighter" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            ResumeAI
+          </Link>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={handleLogout}
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
+            >
+              Log Out
+            </button>
+          </div>
+        </div>
 
         {/* ═══ Page Header (Stitch Prepare style) ═══ */}
         <header className="fade-slide-up" style={{ animationDelay: '0.1s' }}>

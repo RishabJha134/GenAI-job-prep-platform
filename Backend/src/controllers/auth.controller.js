@@ -111,7 +111,8 @@ async function loginUserController(req, res) {
 }
 
 async function logoutUserController(req, res) {
-  const token = req.token;
+  const token = req.token || req.cookies?.token;
+  console.log("token from the logoutcontroller " + token);
 
   if (!token) {
   return res.status(401).json({

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { useInterview } from "../hooks/useInterview";
-
+import { useAuth } from "../../auth/hooks/useAuth";
 
 const TABS = [
   { id: "technical", label: "Technical Questions" },
@@ -11,6 +12,7 @@ const TABS = [
 const Interview = () => {
   const [activeTab, setActiveTab] = useState("technical");
   const {report,loading,getResumePdf} = useInterview();
+  const { handleLogout } = useAuth();
   const interviewId = report?._id;
   const data = report; // Replace with actual data fetching logic
 
@@ -151,6 +153,10 @@ const Interview = () => {
       {/* ═══ Top Header Bar (Stitch Interview header style) ═══ */}
       <header className="h-16 border-b border-[#48474b] flex items-center justify-between px-6 shrink-0 sticky top-0 z-50" style={{ background: '#19191d' }}>
         <div className="flex items-center gap-4">
+          <Link to="/dashboard" className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors mr-2">
+            <span className="material-symbols-outlined text-lg">arrow_back</span>
+            <span className="hidden md:inline text-xs font-semibold">Dashboard</span>
+          </Link>
           <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
             <span className="material-symbols-outlined text-indigo-400 text-base">neurology</span>
           </div>
@@ -176,6 +182,13 @@ const Interview = () => {
           >
             <span className="material-symbols-outlined text-[18px]">download</span>
             <span className="hidden sm:inline">Resume</span>
+          </button>
+          {/* Log Out button */}
+          <button
+            onClick={handleLogout}
+            className="text-xs font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer border border-zinc-700 hover:border-zinc-500 rounded-lg px-3 py-2 hidden md:inline-block"
+          >
+            Log Out
           </button>
         </div>
       </header>
