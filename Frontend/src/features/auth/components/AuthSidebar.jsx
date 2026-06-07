@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const AuthSidebar = () => {
   return (
@@ -47,12 +48,12 @@ const AuthSidebar = () => {
       {/* Content Overlay */}
       <div className="relative z-10 flex flex-col h-full justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3 w-fit hover:opacity-85 transition-opacity cursor-pointer">
           <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
             <span className="material-symbols-outlined text-indigo-400">neurology</span>
           </div>
-          <span className="text-2xl font-bold tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ResumeAI</span>
-        </div>
+          <span className="text-2xl font-bold tracking-tight text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ResumeAI</span>
+        </Link>
 
         {/* Main Copy */}
         <div className="max-w-md">

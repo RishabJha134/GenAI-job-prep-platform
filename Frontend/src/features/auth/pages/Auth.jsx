@@ -98,12 +98,12 @@ const Auth = ({ isLogin }) => {
         {/* Auth Card (Glassmorphic) */}
         <div className="relative z-10 w-full max-w-md bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 rounded-xl p-8 shadow-2xl">
           {/* Mobile Logo */}
-          <div className="flex lg:hidden items-center justify-center space-x-3 mb-8">
+          <Link to="/" className="flex lg:hidden items-center justify-center space-x-3 mb-8 hover:opacity-85 transition-opacity cursor-pointer text-white">
             <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
               <span className="material-symbols-outlined text-indigo-400 text-base">neurology</span>
             </div>
             <span className="text-2xl font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ResumeAI</span>
-          </div>
+          </Link>
 
           {/* Headline */}
           <div className="text-center lg:text-left mb-8">
