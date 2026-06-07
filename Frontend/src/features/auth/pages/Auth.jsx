@@ -8,7 +8,6 @@ const Auth = ({ isLogin }) => {
   const { user, loading, handleLogin, handleRegister } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect to landing page if already logged in
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -85,19 +84,14 @@ const Auth = ({ isLogin }) => {
   return (
     <main className="flex h-screen w-full overflow-hidden text-white" style={{ background: '#0e0e11' }}>
 
-      {/* ─── Left Panel: Shared Auth Sidebar ─── */}
       <AuthSidebar />
 
-      {/* ─── Right Panel: Auth Form ─── */}
       <div className="w-full lg:w-1/2 relative flex items-center justify-center p-6 sm:p-12" style={{ background: '#09090B' }}>
-        {/* Ambient Glow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
           <div className="w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[100px]"></div>
         </div>
 
-        {/* Auth Card (Glassmorphic) */}
         <div className="relative z-10 w-full max-w-md bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 rounded-xl p-8 shadow-2xl">
-          {/* Mobile Logo */}
           <Link to="/" className="flex lg:hidden items-center justify-center space-x-3 mb-8 hover:opacity-85 transition-opacity cursor-pointer text-white">
             <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
               <span className="material-symbols-outlined text-indigo-400 text-base">neurology</span>
@@ -105,7 +99,6 @@ const Auth = ({ isLogin }) => {
             <span className="text-2xl font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ResumeAI</span>
           </Link>
 
-          {/* Headline */}
           <div className="text-center lg:text-left mb-8">
             <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               {isLogin ? "Welcome back" : "Create your account"}
@@ -115,7 +108,6 @@ const Auth = ({ isLogin }) => {
             </p>
           </div>
 
-          {/* Error Message */}
           {error && (
             <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-start gap-2">
               <span className="material-symbols-outlined text-[18px] shrink-0 mt-0.5">error</span>
@@ -123,9 +115,7 @@ const Auth = ({ isLogin }) => {
             </div>
           )}
 
-          {/* Form */}
           <form className="space-y-5" onSubmit={handleSubmit} noValidate>
-            {/* Username (Register Only) */}
             {!isLogin && (
               <div>
                 <label className="sr-only" htmlFor="username">Username</label>
@@ -146,7 +136,6 @@ const Auth = ({ isLogin }) => {
               </div>
             )}
 
-            {/* Email */}
             <div>
               <label className="sr-only" htmlFor="email">Email</label>
               <div className="relative">
@@ -165,7 +154,6 @@ const Auth = ({ isLogin }) => {
               </div>
             </div>
 
-            {/* Password */}
             <div>
               <label className="sr-only" htmlFor="password">Password</label>
               <div className="relative">
@@ -184,7 +172,6 @@ const Auth = ({ isLogin }) => {
               </div>
             </div>
 
-            {/* Submit */}
             <button
               className="w-full flex items-center justify-center space-x-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg px-4 py-2.5 font-semibold transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-indigo-500/20 text-sm mt-4"
               type="submit"
@@ -193,7 +180,6 @@ const Auth = ({ isLogin }) => {
             </button>
           </form>
 
-          {/* Footer */}
           <p className="mt-8 text-center text-sm text-zinc-400">
             {isLogin ? (
               <>

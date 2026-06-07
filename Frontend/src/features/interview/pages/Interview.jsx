@@ -12,13 +12,10 @@ const Interview = () => {
   const [activeTab, setActiveTab] = useState("technical");
   const {report,loading,resumeLoading,getResumePdf} = useInterview();
   const interviewId = report?._id;
-  const data = report; // Replace with actual data fetching logic
-
-  
+  const data = report;
 
   console.log("data: "+ JSON.stringify(data));
 
-  
   const handleDownloadResume = async () => {
     const interviewReportId = interviewId;
     if (!interviewReportId) return;
@@ -77,7 +74,6 @@ const Interview = () => {
           className="group relative rounded-xl border border-[#48474b] p-5 sm:p-6 transition-all duration-200 hover:border-indigo-500/30"
           style={{ background: '#19191d' }}
         >
-          {/* Question header */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <span className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full px-2.5 py-0.5 text-xs font-medium">
@@ -89,7 +85,6 @@ const Interview = () => {
             {q.question}
           </h3>
 
-          {/* Intention */}
           <div className="space-y-1.5 mb-4">
             <p className="text-xs font-semibold uppercase tracking-wider text-[#acaaae]">
               Intention
@@ -97,7 +92,6 @@ const Interview = () => {
             <p className="text-sm leading-relaxed text-[#acaaae]">{q.intention}</p>
           </div>
 
-          {/* Suggested Answer */}
           <div className="space-y-1.5">
             <p className="text-xs font-semibold uppercase tracking-wider text-[#acaaae]">
               Suggested Answer
@@ -148,7 +142,6 @@ const Interview = () => {
   return (
     <main className="min-h-screen text-white antialiased" style={{ background: '#0e0e11' }}>
 
-      {/* ═══ Top Header Bar (Stitch Interview header style) ═══ */}
       <header className="h-16 border-b border-[#48474b] flex items-center justify-between px-6 shrink-0 sticky top-0 z-50" style={{ background: '#19191d' }}>
         <div className="flex items-center gap-4">
           <Link to="/dashboard" className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors mr-2">
@@ -163,17 +156,14 @@ const Interview = () => {
           </h1>
         </div>
         <div className="flex items-center gap-4">
-          {/* Match Score Badge */}
           <div className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-2">
             <span className="material-symbols-outlined text-[16px]">analytics</span>
             Match: {data.matchScore}%
           </div>
-          {/* Question count */}
           <div className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-2 hidden sm:flex">
             <span className="material-symbols-outlined text-[16px]">quiz</span>
             {technicalQuestions.length + behavioralQuestions.length} Questions
           </div>
-          {/* Download button */}
           <button
             onClick={handleDownloadResume}
             disabled={resumeLoading}
@@ -194,11 +184,9 @@ const Interview = () => {
         </div>
       </header>
 
-      {/* ═══ Main Content ═══ */}
       <div className="mx-auto max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)_280px]">
 
-          {/* ─── Left Sidebar: Tab Navigation ─── */}
           <aside
             className="rounded-xl border border-[#48474b] p-4 xl:sticky xl:top-24 xl:self-start"
             style={{ background: '#19191d' }}
@@ -225,7 +213,6 @@ const Interview = () => {
               ))}
             </nav>
 
-            {/* Sidebar stats */}
             <div className="mt-6 border-t border-[#48474b]/50 pt-4 space-y-3 px-3">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-[#acaaae]">Roadmap Days</span>
@@ -238,12 +225,10 @@ const Interview = () => {
             </div>
           </aside>
 
-          {/* ─── Center: Main Content Panel ─── */}
           <section
             className="min-w-0 rounded-xl border border-[#48474b] p-5 sm:p-7"
             style={{ background: '#19191d' }}
           >
-            {/* Section Header */}
             <header className="mb-6 border-b border-[#48474b] pb-5">
               <div className="flex items-center gap-2 mb-1">
                 <span className={`material-symbols-outlined text-[20px] ${activeTab === 'technical' ? 'text-indigo-400' : activeTab === 'behavioral' ? 'text-violet-400' : 'text-emerald-400'}`}>
@@ -266,16 +251,13 @@ const Interview = () => {
               </p>
             </header>
 
-            {/* Tab Content */}
             <div>{renderContent()}</div>
           </section>
 
-          {/* ─── Right Sidebar: Skill Gaps ─── */}
           <aside
             className="rounded-xl border border-[#48474b] p-5 xl:sticky xl:top-24 xl:self-start"
             style={{ background: '#19191d' }}
           >
-            {/* Heading */}
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
                 <span className="material-symbols-outlined text-amber-400 text-[18px]">warning</span>
@@ -293,7 +275,6 @@ const Interview = () => {
               )}
             </div>
 
-            {/* Severity Legend */}
             <div className="mb-4 flex items-center gap-4 text-[10px] font-medium text-[#acaaae]">
               <span className="flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> Low
@@ -306,7 +287,6 @@ const Interview = () => {
               </span>
             </div>
 
-            {/* Skill Gap Badges */}
             <div className="flex flex-wrap gap-2">
               {skillGaps.map((gap, idx) => (
                 <span
@@ -320,7 +300,6 @@ const Interview = () => {
               ))}
             </div>
 
-            {/* Breakdown */}
             {skillGaps.length > 0 && (
               <div className="mt-5 rounded-lg border border-[#48474b] p-4" style={{ background: '#0e0e11' }}>
                 <p className="text-xs font-semibold uppercase tracking-wider text-[#acaaae] mb-3">Breakdown</p>

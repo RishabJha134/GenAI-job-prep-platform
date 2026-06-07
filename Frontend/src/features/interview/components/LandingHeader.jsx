@@ -20,7 +20,6 @@ const LandingHeader = ({ user, handleLogout }) => {
   const handleLogoClick = (e) => {
     if (window.location.pathname === "/") {
       if (window.location.hash) {
-        // Let navigation happen to clear the hash, but also scroll to top smoothly
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         e.preventDefault();

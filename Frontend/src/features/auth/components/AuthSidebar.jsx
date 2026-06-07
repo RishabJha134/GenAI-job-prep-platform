@@ -4,12 +4,9 @@ import { Link } from "react-router";
 const AuthSidebar = () => {
   return (
     <div className="relative hidden lg:flex lg:w-1/2 flex-col justify-between p-12 overflow-hidden" style={{ background: '#000000' }}>
-      {/* PURE CSS Animated Background (No SVG to avoid routing bugs) */}
       <div className="absolute inset-0 w-full h-full opacity-60 pointer-events-none overflow-hidden">
-        {/* Dark base */}
         <div className="absolute inset-0 bg-[#09090b]"></div>
         
-        {/* Indigo Glow Circle */}
         <div 
           className="absolute rounded-full bg-[#6366f1] opacity-40 blur-[80px]"
           style={{
@@ -21,7 +18,6 @@ const AuthSidebar = () => {
           }}
         ></div>
 
-        {/* Purple Glow Circle */}
         <div 
           className="absolute rounded-full bg-[#a855f7] opacity-30 blur-[80px]"
           style={{
@@ -45,9 +41,7 @@ const AuthSidebar = () => {
         }
       `}} />
 
-      {/* Content Overlay */}
       <div className="relative z-10 flex flex-col h-full justify-between">
-        {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 w-fit hover:opacity-85 transition-opacity cursor-pointer">
           <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
             <span className="material-symbols-outlined text-indigo-400">neurology</span>
@@ -55,7 +49,6 @@ const AuthSidebar = () => {
           <span className="text-2xl font-bold tracking-tight text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ResumeAI</span>
         </Link>
 
-        {/* Main Copy */}
         <div className="max-w-md">
           <h1 className="text-[40px] font-bold leading-[1.2] tracking-tight mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Your AI-Powered Career Coach
@@ -64,7 +57,6 @@ const AuthSidebar = () => {
             Accelerate your career journey with intelligent resume analysis, targeted mock interviews, and skill gap identification.
           </p>
 
-          {/* Feature Rows */}
           <div className="space-y-6">
             <div className="flex items-center space-x-4">
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-400/10 text-indigo-400 border border-indigo-400/20">

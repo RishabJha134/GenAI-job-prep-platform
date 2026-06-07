@@ -15,33 +15,24 @@ const Landing = () => {
   return (
     <div className="font-body-md antialiased overflow-x-hidden selection:bg-primary/30 selection:text-primary-fixed bg-surface-main text-on-surface min-h-screen flex flex-col relative">
       
-      {/* Top Navbar */}
       <LandingHeader user={user} handleLogout={handleLogout} />
 
-      {/* Main Content Area */}
       <main className="flex-grow pt-header-height">
         
-        {/* Hero Section */}
         <LandingHero user={user} />
 
-        {/* How It Works Section */}
         <LandingHowItWorks />
 
-        {/* Features Bento Grid */}
         <LandingFeatures />
 
-        {/* Pricing Section */}
         <LandingPricing user={user} />
 
-        {/* About Us Section */}
         <LandingAbout />
 
-        {/* Testimonials Section */}
         <LandingTestimonials />
 
       </main>
 
-      {/* Footer */}
       <LandingFooter />
 
     </div>

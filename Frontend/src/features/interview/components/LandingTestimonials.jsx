@@ -9,7 +9,6 @@ const LandingTestimonials = () => {
           <p className="font-body-md text-body-md text-on-surface-variant font-medium">Join thousands who have successfully navigated the modern hiring landscape.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Testimonial 1 */}
           <div className="bg-surface-card border border-border-subtle rounded-xl p-6 flex flex-col relative overflow-hidden group text-left">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="material-symbols-outlined text-surface-variant text-4xl mb-4">format_quote</span>
@@ -26,7 +25,6 @@ const LandingTestimonials = () => {
               </div>
             </div>
           </div>
-          {/* Testimonial 2 */}
           <div className="bg-surface-card border border-border-subtle rounded-xl p-6 flex flex-col relative overflow-hidden group text-left">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="material-symbols-outlined text-surface-variant text-4xl mb-4">format_quote</span>
@@ -43,7 +41,6 @@ const LandingTestimonials = () => {
               </div>
             </div>
           </div>
-          {/* Testimonial 3 */}
           <div className="bg-surface-card border border-border-subtle rounded-xl p-6 flex flex-col relative overflow-hidden group text-left">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-tertiary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="material-symbols-outlined text-surface-variant text-4xl mb-4">format_quote</span>

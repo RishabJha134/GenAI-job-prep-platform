@@ -12,7 +12,6 @@ const LandingPricing = ({ user }) => {
           <p className="font-body-md text-body-md text-on-surface-variant">Start for free, upgrade when you need advanced career firepower.</p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Free Tier */}
           <div className="glass-card rounded-2xl p-8 border-border-subtle flex flex-col text-left border border-[#333466]/30">
             <div className="mb-8">
               <h3 className="font-headline-md text-headline-md text-on-surface mb-2">Basic</h3>
@@ -41,7 +40,6 @@ const LandingPricing = ({ user }) => {
             </button>
           </div>
           
-          {/* Pro Tier */}
           <div className="glass-card rounded-2xl p-8 border-primary-container relative flex flex-col shadow-[0_0_30px_rgba(128,131,255,0.1)] text-left border border-indigo-500/50">
             <div className="absolute top-0 right-0 bg-primary text-on-primary px-4 py-1 rounded-bl-xl rounded-tr-xl font-label-xs font-bold tracking-wider uppercase">Most Popular</div>
             <div className="mb-8">

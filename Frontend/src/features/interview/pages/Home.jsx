@@ -50,20 +50,17 @@ const Home = () => {
 
   return (
     <main className="min-h-screen px-4 py-8 text-white antialiased sm:px-6 lg:px-8 relative" style={{ background: '#0e0e11' }}>
-      {/* Background decorative blur */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-8 relative z-10">
 
-        {/* ═══ Dashboard Top Bar ═══ */}
         <div className="flex justify-between items-center border-b border-zinc-800 pb-4">
           <Link to="/" className="text-xl font-bold text-primary tracking-tighter" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             ResumeAI
           </Link>
         </div>
 
-        {/* ═══ Page Header (Stitch Prepare style) ═══ */}
         <header className="fade-slide-up" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-[32px] font-bold tracking-tight leading-[1.25]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Prepare Resume
@@ -73,20 +70,16 @@ const Home = () => {
           </p>
         </header>
 
-        {/* ═══ 60/40 Grid (Stitch 7/5 col layout) ═══ */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-          {/* ─── Left Column (60%) ─── */}
           <div className="lg:col-span-7 space-y-6">
 
-            {/* Upload Section */}
             <div className="border border-[#48474b] rounded-xl p-6 fade-slide-up" style={{ background: '#19191d', animationDelay: '0.15s' }}>
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-indigo-400">upload_file</span>
                 <h3 className="text-base font-semibold">Upload Your Resume</h3>
               </div>
 
-              {/* Upload Dropzone */}
               <label
                 className={`group flex flex-col items-center justify-center border-2 border-dashed rounded-xl p-8 cursor-pointer transition-all duration-300 ${fileName ? 'border-emerald-500/50 hover:border-emerald-500 bg-emerald-500/5' : 'border-[#48474b] hover:border-indigo-500/50 bg-[#1f1f23]'}`}
                 htmlFor="resume"
@@ -119,7 +112,6 @@ const Home = () => {
               />
             </div>
 
-            {/* Job Description Section */}
             <div className="border border-[#48474b] rounded-xl p-6 fade-slide-up" style={{ background: '#19191d', animationDelay: '0.25s' }}>
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-indigo-400">description</span>
@@ -140,7 +132,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Self Description Section */}
             <div className="border border-[#48474b] rounded-xl p-6 fade-slide-up" style={{ background: '#19191d', animationDelay: '0.3s' }}>
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-indigo-400">person</span>
@@ -159,13 +150,10 @@ const Home = () => {
             </div>
           </div>
 
-          {/* ─── Right Column (40% - Sticky) ─── */}
           <div className="lg:col-span-5 relative">
             <div className="lg:sticky lg:top-8 space-y-6">
 
-              {/* CTA Card */}
               <div className="relative overflow-hidden rounded-xl border border-[#48474b]/50 p-6 fade-slide-up group" style={{ background: '#19191d', animationDelay: '0.35s' }}>
-                {/* Subtle gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-50"></div>
                 <div className="relative z-10 flex flex-col items-center text-center space-y-4">
                   <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-300">
@@ -192,7 +180,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* ═══ Recent Reports ═══ */}
         {recentReports.length > 0 && (
           <section className="rounded-xl border border-[#48474b] p-6 fade-slide-up" style={{ background: '#19191d', animationDelay: '0.4s' }}>
             <div className="flex items-center justify-between gap-4 mb-6">

@@ -9,7 +9,6 @@ const LandingFeatures = () => {
           <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl">A comprehensive suite of tools designed to perfect your professional presentation.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-          {/* Feature 1 (Large) */}
           <div className="md:col-span-2 glass-card rounded-2xl p-8 relative overflow-hidden flex flex-col justify-end group border border-[#333466]/30">
             <div className="absolute inset-0 bg-gradient-to-br from-surface-container-highest to-surface-main opacity-50"></div>
             <div className="relative z-10 w-full md:w-2/3 text-left">
@@ -22,7 +21,6 @@ const LandingFeatures = () => {
             <div className="absolute right-0 top-0 w-1/2 h-full opacity-30 group-hover:opacity-50 transition-opacity mix-blend-screen pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, #8083ff 0%, transparent 70%)' }}></div>
           </div>
           
-          {/* Feature 2 */}
           <div className="glass-card rounded-2xl p-8 flex flex-col hover:border-primary/50 transition-colors text-left border border-[#333466]/30">
             <div className="w-10 h-10 bg-primary/10 rounded flex items-center justify-center mb-auto border border-primary/20">
               <span className="material-symbols-outlined text-primary" style={{ fontSize: '24px' }}>smartphone</span>
@@ -33,7 +31,6 @@ const LandingFeatures = () => {
             </div>
           </div>
           
-          {/* Feature 3 */}
           <div className="glass-card rounded-2xl p-8 flex flex-col hover:border-primary/50 transition-colors text-left border border-[#333466]/30">
             <div className="w-10 h-10 bg-primary/10 rounded flex items-center justify-center mb-auto border border-primary/20">
               <span className="material-symbols-outlined text-primary" style={{ fontSize: '24px' }}>agender</span>
@@ -44,7 +41,6 @@ const LandingFeatures = () => {
             </div>
           </div>
           
-          {/* Feature 4 (Large) */}
           <div className="md:col-span-2 glass-card rounded-2xl p-8 relative overflow-hidden flex flex-col justify-end group border border-[#333466]/30">
             <div className="absolute inset-0 bg-gradient-to-br from-surface-container-highest to-surface-main opacity-50"></div>
             <div className="relative z-10 w-full md:w-2/3 text-left">
